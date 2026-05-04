@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C-Pet Express | Chilakaluripet Delivery</title>
+    <!-- Simple CSS for a professional mobile look -->
+    <style>
+        body { font-family: sans-serif; background: #f4f4f9; display: flex; flex-direction: column; align-items: center; padding: 20px; margin: 0; }
+        .card { background: white; padding: 25px; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); width: 100%; max-width: 350px; text-align: center; }
+        .logo { width: 100px; border-radius: 50%; margin-bottom: 15px; }
+        h1 { color: #FF8C00; margin: 10px 0; font-size: 24px; }
+        p { color: #666; font-size: 14px; line-height: 1.5; }
+        .btn { display: block; background: #25D366; color: white; text-decoration: none; padding: 15px; border-radius: 10px; font-weight: bold; margin-top: 20px; }
+        .upi-box { margin-top: 20px; padding: 10px; background: #eee; border-radius: 5px; font-size: 12px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <img src="logo.jpg" alt="C-Pet Express" class="logo">
+        <h1>C-Pet Express</h1>
+        <p>Serving Murikipudi, Ganapavaram, Pasumarru, and Boppudi. Fast delivery from Chilakaluripet to your door!</p>
+        
+        <!-- Replace YOUR_NUMBER with your actual WhatsApp number -->
+        <a href="https://wa.me/91XXXXXXXXXX?text=Hi%20C-Pet%20Express!%20I've%20seen%20your%20website%20and%20want%20to%20order." class="btn">💬 Order on WhatsApp</a>
+        
+        <div class="upi-box" onclick="copyUPI()">
+            Click to Copy UPI: <strong>yourname@okaxis</strong>
+        </div>
+    </div>
+
+    <script>
+        function copyUPI() {
+            navigator.clipboard.writeText("yourname@okaxis");
+            alert("UPI ID copied! Use it in PhonePe/GPay.");
+        }
+    </script>
+</body>
+</html>
