@@ -4,16 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>C-Pet Express | Fast Village Delivery</title>
+    
     <style>
         :root {
             --primary-orange: #FF8C00;
             --whatsapp-green: #25D366;
+            --call-blue: #007AFF;
             --bg-color: #f8f9fa;
-            --text-dark: #333;
+        }
+
+        /* Cinematic Slow-Motion Entry for the Card */
+        @keyframes slowMotionEntry {
+            0% { 
+                opacity: 0; 
+                transform: translate3d(0, 40px, 0) scale(0.95);
+                filter: blur(10px);
+            }
+            100% { 
+                opacity: 1; 
+                transform: translate3d(0, 0, 0) scale(1);
+                filter: blur(0);
+            }
         }
 
         body { 
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; 
             background: var(--bg-color); 
             display: flex; 
             justify-content: center; 
@@ -25,13 +40,15 @@
 
         .card { 
             background: white; 
-            border-radius: 24px; 
-            box-shadow: 0 12px 30px rgba(0,0,0,0.1); 
+            border-radius: 28px; 
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1); 
             width: 100%; 
-            max-width: 400px; 
+            max-width: 420px; 
             text-align: center; 
             padding-bottom: 30px;
             overflow: hidden;
+            animation: slowMotionEntry 1.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+            will-change: transform, opacity, filter;
         }
 
         .logo-header {
@@ -40,28 +57,9 @@
             margin-bottom: 10px;
         }
 
-        .logo { 
-            width: 150px; 
-            height: auto;
-            display: block;
-            margin: 0 auto;
-        }
+        .logo { width: 140px; height: auto; display: block; margin: 0 auto; }
 
-        h1 { 
-            color: var(--text-dark); 
-            margin: 10px 0 5px 0; 
-            font-size: 28px; 
-            font-weight: 800;
-        }
-
-        .tagline {
-            color: var(--primary-orange);
-            font-weight: bold;
-            margin-bottom: 20px;
-            font-size: 13px;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-        }
+        h1 { color: #333; margin: 15px 0 5px 0; font-size: 28px; font-weight: 800; }
 
         .services {
             display: flex;
@@ -75,7 +73,7 @@
         .pill {
             background: #fff3e6;
             color: #d35400;
-            padding: 6px 14px;
+            padding: 8px 16px;
             border-radius: 50px;
             font-size: 13px;
             font-weight: 600;
@@ -83,15 +81,12 @@
         }
 
         .description { 
-            color: #555; 
-            font-size: 15px; 
-            line-height: 1.6; 
-            margin-bottom: 20px;
-            padding: 0 30px;
+            color: #555; font-size: 15px; line-height: 1.6; 
+            margin-bottom: 20px; padding: 0 30px;
         }
 
         .info-grid {
-            background: #fdfdfd;
+            background: #fafafa;
             border-top: 1px solid #eee;
             border-bottom: 1px solid #eee;
             display: flex;
@@ -100,61 +95,66 @@
             margin-bottom: 25px;
         }
 
-        .info-item {
-            font-size: 12px;
-            color: #777;
-        }
+        .btn-container { padding: 0 30px; }
 
-        .info-item b {
-            display: block;
-            color: var(--text-dark);
-            font-size: 14px;
-        }
-
+        /* --- BUBBLE MOTION BUTTONS --- */
         .btn { 
-            display: block; 
-            background: var(--whatsapp-green); 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
             color: white; 
             text-decoration: none; 
             padding: 18px; 
             border-radius: 15px; 
             font-weight: bold; 
             font-size: 18px;
-            margin: 0 30px;
-            transition: all 0.2s;
-            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.25);
+            margin-bottom: 12px;
+            /* Transition for the 'Bubble' feel */
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+            cursor: pointer;
         }
 
-        .btn:active {
-            transform: scale(0.96);
+        .btn-wa { 
+            background: var(--whatsapp-green); 
+            box-shadow: 0 6px 15px rgba(37, 211, 102, 0.2); 
+        }
+        
+        .btn-call { 
+            background: var(--call-blue); 
+            font-size: 16px; 
+            padding: 12px; 
+        }
+
+        /* Hover Effect: The Bubble Pop */
+        .btn:hover { 
+            transform: scale(1.1); /* Expands like a bubble */
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+
+        /* Active Effect: The Bubble Squeeze */
+        .btn:active { 
+            transform: scale(0.9); 
         }
 
         .upi-box { 
-            margin: 25px 30px 0 30px; 
+            margin: 20px 30px 0 30px; 
             padding: 15px; 
             background: #f8f9fa; 
             border: 1.5px dashed #ccc;
             border-radius: 12px; 
-            font-size: 13px; 
             cursor: pointer;
-            transition: border-color 0.3s;
+            transition: background 0.3s ease;
         }
 
-        .upi-box:hover { border-color: var(--primary-orange); }
+        .upi-box:hover { background: #f0f2f5; }
 
-        .upi-id {
-            display: block;
-            color: #000;
+        .copy-hint { 
+            font-size: 11px; 
+            color: var(--primary-orange); 
+            display: none; 
+            margin-top: 5px;
             font-weight: bold;
-            font-size: 15px;
-            margin-top: 4px;
-        }
-
-        .footer {
-            margin-top: 20px;
-            font-size: 11px;
-            color: #bbb;
-            letter-spacing: 1px;
         }
     </style>
 </head>
@@ -162,12 +162,11 @@
 
     <div class="card">
         <div class="logo-header">
-            <!-- Logo type updated to .jpeg -->
             <img src="image_1250f4.jpeg" alt="C-Pet Express Logo" class="logo">
         </div>
         
         <h1>C-Pet Express</h1>
-        <div class="tagline">Fast Village Delivery</div>
+        <p style="color:var(--primary-orange); font-weight:bold; margin-bottom:15px; font-size: 13px; letter-spacing: 2px;">FAST VILLAGE DELIVERY</p>
 
         <div class="services">
             <span class="pill">🍔 Food</span>
@@ -177,39 +176,37 @@
         </div>
         
         <p class="description">
-            Bringing Chilakaluripet’s best to your doorstep! Serving <b>Murikipudi, Ganapavaram, Pasumarru, Boppudi</b> & more.
+            Bringing Chilakaluripet’s best to <b>Murikipudi, Ganapavaram, Pasumarru, & Boppudi</b>.
         </p>
 
         <div class="info-grid">
-            <div class="info-item">
-                📍 RADIUS
-                <b>15 KM Range</b>
-            </div>
-            <div class="info-item">
-                ⏱️ HOURS
-                <b>9 AM - 10 PM</b>
-            </div>
+            <div>📍 RANGE <b style="display:block; color:#333; font-size: 16px;">15 KM</b></div>
+            <div>⏱️ HOURS <b style="display:block; color:#333; font-size: 16px;">9 AM - 10 PM</b></div>
         </div>
         
-        <!-- Mobile number updated to 8978862206 -->
-        <a href="https://wa.me/918978862206?text=Hi%20C-Pet%20Express!%20I'd%20like%20to%20place%20an%20order." class="btn">
-            💬 Order on WhatsApp
-        </a>
+        <div class="btn-container">
+            <a href="https://wa.me/918978862206?text=Hi%20C-Pet%20Express!%20I'd%20like%20to%20order." class="btn btn-wa">
+                Order on WhatsApp
+            </a>
+            <a href="tel:+918978862206" class="btn btn-call">
+                📞 Call Us Directly
+            </a>
+        </div>
         
         <div class="upi-box" onclick="copyUPI()">
-            Tap to copy UPI for payment:
-            <!-- UPI ID updated to 7993557645-2@ybl -->
-            <span class="upi-id" id="upiText">7993557645-2@ybl</span>
+            Tap to copy UPI ID:
+            <span id="upiText" style="display:block; font-weight:bold; font-size:16px; margin-top:4px;">7993557645-2@ybl</span>
+            <span id="copyHint" class="copy-hint">COPIED SUCCESSFULLY!</span>
         </div>
-
-        <div class="footer">FAST • RELIABLE • LOCAL</div>
     </div>
 
     <script>
         function copyUPI() {
             const upiId = document.getElementById("upiText").innerText;
+            const hint = document.getElementById("copyHint");
             navigator.clipboard.writeText(upiId).then(() => {
-                alert("UPI ID Copied: " + upiId);
+                hint.style.display = "block";
+                setTimeout(() => { hint.style.display = "none"; }, 2000);
             });
         }
     </script>
