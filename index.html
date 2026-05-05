@@ -3,37 +3,216 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>C-Pet Express | Chilakaluripet Delivery</title>
-    <!-- Simple CSS for a professional mobile look -->
+    <title>C-Pet Express | Fast Village Delivery</title>
     <style>
-        body { font-family: sans-serif; background: #f4f4f9; display: flex; flex-direction: column; align-items: center; padding: 20px; margin: 0; }
-        .card { background: white; padding: 25px; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); width: 100%; max-width: 350px; text-align: center; }
-        .logo { width: 100px; border-radius: 50%; margin-bottom: 15px; }
-        h1 { color: #FF8C00; margin: 10px 0; font-size: 24px; }
-        p { color: #666; font-size: 14px; line-height: 1.5; }
-        .btn { display: block; background: #25D366; color: white; text-decoration: none; padding: 15px; border-radius: 10px; font-weight: bold; margin-top: 20px; }
-        .upi-box { margin-top: 20px; padding: 10px; background: #eee; border-radius: 5px; font-size: 12px; cursor: pointer; }
+        :root {
+            --primary-orange: #FF8C00;
+            --whatsapp-green: #25D366;
+            --bg-color: #f8f9fa;
+            --text-dark: #333;
+        }
+
+        body { 
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
+            background: var(--bg-color); 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            min-height: 100vh;
+            margin: 0; 
+            padding: 15px;
+        }
+
+        .card { 
+            background: white; 
+            border-radius: 24px; 
+            box-shadow: 0 12px 30px rgba(0,0,0,0.1); 
+            width: 100%; 
+            max-width: 400px; 
+            text-align: center; 
+            padding-bottom: 30px;
+            overflow: hidden;
+        }
+
+        .logo-header {
+            background: #000;
+            padding: 25px 0;
+            margin-bottom: 10px;
+        }
+
+        .logo { 
+            width: 150px; 
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        h1 { 
+            color: var(--text-dark); 
+            margin: 10px 0 5px 0; 
+            font-size: 28px; 
+            font-weight: 800;
+        }
+
+        .tagline {
+            color: var(--primary-orange);
+            font-weight: bold;
+            margin-bottom: 20px;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .services {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+            padding: 0 20px;
+            margin-bottom: 20px;
+        }
+
+        .pill {
+            background: #fff3e6;
+            color: #d35400;
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 600;
+            border: 1px solid #ffdbb8;
+        }
+
+        .description { 
+            color: #555; 
+            font-size: 15px; 
+            line-height: 1.6; 
+            margin-bottom: 20px;
+            padding: 0 30px;
+        }
+
+        .info-grid {
+            background: #fdfdfd;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-around;
+            padding: 15px 0;
+            margin-bottom: 25px;
+        }
+
+        .info-item {
+            font-size: 12px;
+            color: #777;
+        }
+
+        .info-item b {
+            display: block;
+            color: var(--text-dark);
+            font-size: 14px;
+        }
+
+        .btn { 
+            display: block; 
+            background: var(--whatsapp-green); 
+            color: white; 
+            text-decoration: none; 
+            padding: 18px; 
+            border-radius: 15px; 
+            font-weight: bold; 
+            font-size: 18px;
+            margin: 0 30px;
+            transition: all 0.2s;
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.25);
+        }
+
+        .btn:active {
+            transform: scale(0.96);
+        }
+
+        .upi-box { 
+            margin: 25px 30px 0 30px; 
+            padding: 15px; 
+            background: #f8f9fa; 
+            border: 1.5px dashed #ccc;
+            border-radius: 12px; 
+            font-size: 13px; 
+            cursor: pointer;
+            transition: border-color 0.3s;
+        }
+
+        .upi-box:hover { border-color: var(--primary-orange); }
+
+        .upi-id {
+            display: block;
+            color: #000;
+            font-weight: bold;
+            font-size: 15px;
+            margin-top: 4px;
+        }
+
+        .footer {
+            margin-top: 20px;
+            font-size: 11px;
+            color: #bbb;
+            letter-spacing: 1px;
+        }
     </style>
 </head>
 <body>
+
     <div class="card">
-        <img src="logo.jpg" alt="C-Pet Express" class="logo">
-        <h1>C-Pet Express</h1>
-        <p>Serving Murikipudi, Ganapavaram, Pasumarru, and Boppudi. Fast delivery from Chilakaluripet to your door!</p>
+        <div class="logo-header">
+            <!-- Logo type updated to .jpeg -->
+            <img src="image_1250f4.jpeg" alt="C-Pet Express Logo" class="logo">
+        </div>
         
-        <!-- Replace YOUR_NUMBER with your actual WhatsApp number -->
-        <a href="https://wa.me/91XXXXXXXXXX?text=Hi%20C-Pet%20Express!%20I've%20seen%20your%20website%20and%20want%20to%20order." class="btn">💬 Order on WhatsApp</a>
+        <h1>C-Pet Express</h1>
+        <div class="tagline">Fast Village Delivery</div>
+
+        <div class="services">
+            <span class="pill">🍔 Food</span>
+            <span class="pill">🛒 Groceries</span>
+            <span class="pill">💊 Medicines</span>
+            <span class="pill">📦 Parcels</span>
+        </div>
+        
+        <p class="description">
+            Bringing Chilakaluripet’s best to your doorstep! Serving <b>Murikipudi, Ganapavaram, Pasumarru, Boppudi</b> & more.
+        </p>
+
+        <div class="info-grid">
+            <div class="info-item">
+                📍 RADIUS
+                <b>15 KM Range</b>
+            </div>
+            <div class="info-item">
+                ⏱️ HOURS
+                <b>9 AM - 10 PM</b>
+            </div>
+        </div>
+        
+        <!-- Mobile number updated to 8978862206 -->
+        <a href="https://wa.me/918978862206?text=Hi%20C-Pet%20Express!%20I'd%20like%20to%20place%20an%20order." class="btn">
+            💬 Order on WhatsApp
+        </a>
         
         <div class="upi-box" onclick="copyUPI()">
-            Click to Copy UPI: <strong>yourname@okaxis</strong>
+            Tap to copy UPI for payment:
+            <!-- UPI ID updated to 7993557645-2@ybl -->
+            <span class="upi-id" id="upiText">7993557645-2@ybl</span>
         </div>
+
+        <div class="footer">FAST • RELIABLE • LOCAL</div>
     </div>
 
     <script>
         function copyUPI() {
-            navigator.clipboard.writeText("yourname@okaxis");
-            alert("UPI ID copied! Use it in PhonePe/GPay.");
+            const upiId = document.getElementById("upiText").innerText;
+            navigator.clipboard.writeText(upiId).then(() => {
+                alert("UPI ID Copied: " + upiId);
+            });
         }
     </script>
+
 </body>
 </html>
